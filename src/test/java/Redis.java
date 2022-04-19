@@ -36,22 +36,32 @@ import redis.clients.jedis.Jedis;
  * ZUNIONSTORE	        求两个或多个有序集合的并集，并将返回结果存储在新的 key 中
  */
 
+
 public class Redis
 {
     private static Jedis jedis;
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp()
     {
         System.out.println("---------------------");
     }
 
+    /**
+     * Tear down.
+     */
     @AfterEach
     void tearDown()
     {
         System.out.println("---------------------");
     }
 
+    /**
+     * Before all.
+     */
     @BeforeAll
     static void beforeAll()
     {
@@ -60,6 +70,9 @@ public class Redis
         System.out.println("启动");
     }
 
+    /**
+     * After all.
+     */
     @AfterAll
     static void afterAll()
     {
@@ -70,6 +83,9 @@ public class Redis
         System.out.println("关闭");
     }
 
+    /**
+     * Zadd.
+     */
     @Test
     void zadd()
     {
@@ -84,6 +100,9 @@ public class Redis
         jedis.zadd("zset1", 92.5, "王五");
     }
 
+    /**
+     * Zcard.
+     */
     @Test
     void zcard()
     {
@@ -93,6 +112,9 @@ public class Redis
         System.out.println(jedis.zcard("zset1"));
     }
 
+    /**
+     * Zcount.
+     */
     @Test
     void zcount()
     {
@@ -101,6 +123,9 @@ public class Redis
         System.out.println(jedis.zcount("zset1", 80, 95));
     }
 
+    /**
+     * Zincrby.
+     */
     @Test
     void zincrby()
     {
@@ -108,18 +133,27 @@ public class Redis
         System.out.println(jedis.zincrby("zset1", 2.5, "张三"));
     }
 
+    /**
+     * Zrange.
+     */
     @Test
     void zrange()
     {
         System.out.println(jedis.zrange("zset1", 1, 2));
     }
 
+    /**
+     * Zrange by score.
+     */
     @Test
     void zrangeByScore()
     {
         System.out.println(jedis.zrangeByScore("zset1", 80, 90));
     }
 
+    /**
+     * Zrank.
+     */
     @Test
     void zrank()
     {
@@ -128,18 +162,27 @@ public class Redis
         System.out.println(jedis.zrank("zset1", "王五"));
     }
 
+    /**
+     * Zrem.
+     */
     @Test
     void zrem()
     {
         System.out.println(jedis.zrem("zset1", "张三"));
     }
 
+    /**
+     * Zrevrange.
+     */
     @Test
     void zrevrange()
     {
         System.out.println(jedis.zrevrange("zset1", 0, 1));
     }
 
+    /**
+     * Zrevrank.
+     */
     @Test
     void zrevrank()
     {
@@ -147,6 +190,9 @@ public class Redis
         System.out.println(jedis.zrevrank("zset1","王五"));
     }
 
+    /**
+     * Zscore.
+     */
     @Test
     void zscore()
     {
